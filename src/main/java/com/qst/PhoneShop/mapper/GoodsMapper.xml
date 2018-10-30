@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.PhoneShop.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Goods">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="phonename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="phoneImg" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="commodityStocks" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sellNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="category" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phonename, price, phoneImg, commodityStocks, sellNum, category
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone (id, phonename, price, 
+      phoneImg, commodityStocks, sellNum, 
+      category)
+    values (#{id,jdbcType=INTEGER}, #{phonename,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{phoneimg,jdbcType=INTEGER}, #{commoditystocks,jdbcType=INTEGER}, #{sellnum,jdbcType=INTEGER}, 
+      #{category,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phonename != null">
+        phonename,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="phoneimg != null">
+        phoneImg,
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks,
+      </if>
+      <if test="sellnum != null">
+        sellNum,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phonename != null">
+        #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    <set>
+      <if test="phonename != null">
+        phonename = #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        phoneImg = #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        sellNum = #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    set phonename = #{phonename,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      phoneImg = #{phoneimg,jdbcType=INTEGER},
+      commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      sellNum = #{sellnum,jdbcType=INTEGER},
+      category = #{category,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Goods">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="phonename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="phoneImg" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="commodityStocks" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sellNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="category" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phonename, price, phoneImg, commodityStocks, sellNum, category
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone (id, phonename, price, 
+      phoneImg, commodityStocks, sellNum, 
+      category)
+    values (#{id,jdbcType=INTEGER}, #{phonename,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{phoneimg,jdbcType=INTEGER}, #{commoditystocks,jdbcType=INTEGER}, #{sellnum,jdbcType=INTEGER}, 
+      #{category,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phonename != null">
+        phonename,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="phoneimg != null">
+        phoneImg,
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks,
+      </if>
+      <if test="sellnum != null">
+        sellNum,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phonename != null">
+        #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    <set>
+      <if test="phonename != null">
+        phonename = #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        phoneImg = #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        sellNum = #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    set phonename = #{phonename,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      phoneImg = #{phoneimg,jdbcType=INTEGER},
+      commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      sellNum = #{sellnum,jdbcType=INTEGER},
+      category = #{category,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Goods">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="phonename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.lang.Float" jdbcType="REAL" />
+      <arg column="phoneImg" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="commodityStocks" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sellNum" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="category" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phonename, price, phoneImg, commodityStocks, sellNum, category
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_phone
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone (id, phonename, price, 
+      phoneImg, commodityStocks, sellNum, 
+      category)
+    values (#{id,jdbcType=INTEGER}, #{phonename,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{phoneimg,jdbcType=INTEGER}, #{commoditystocks,jdbcType=INTEGER}, #{sellnum,jdbcType=INTEGER}, 
+      #{category,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Goods">
+    insert into tb_phone
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phonename != null">
+        phonename,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="phoneimg != null">
+        phoneImg,
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks,
+      </if>
+      <if test="sellnum != null">
+        sellNum,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="phonename != null">
+        #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    <set>
+      <if test="phonename != null">
+        phonename = #{phonename,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="phoneimg != null">
+        phoneImg = #{phoneimg,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystocks != null">
+        commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      </if>
+      <if test="sellnum != null">
+        sellNum = #{sellnum,jdbcType=INTEGER},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Goods">
+    update tb_phone
+    set phonename = #{phonename,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      phoneImg = #{phoneimg,jdbcType=INTEGER},
+      commodityStocks = #{commoditystocks,jdbcType=INTEGER},
+      sellNum = #{sellnum,jdbcType=INTEGER},
+      category = #{category,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

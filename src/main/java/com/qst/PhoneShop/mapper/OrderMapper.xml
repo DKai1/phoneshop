@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.PhoneShop.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Order">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="order_sn" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="amount" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="pay_status" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="consgineeId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="shipping" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="addtime" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="phoneId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_sn, amount, pay_status, user_id, consgineeId, payment, shipping, addtime, 
+    phoneId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order (id, order_sn, amount, 
+      pay_status, user_id, consgineeId, 
+      payment, shipping, addtime, 
+      phoneId)
+    values (#{id,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{payStatus,jdbcType=TINYINT}, #{userId,jdbcType=INTEGER}, #{consgineeid,jdbcType=INTEGER}, 
+      #{payment,jdbcType=TINYINT}, #{shipping,jdbcType=TINYINT}, #{addtime,jdbcType=DATE}, 
+      #{phoneid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="consgineeid != null">
+        consgineeId,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="shipping != null">
+        shipping,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="phoneid != null">
+        phoneId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        #{phoneid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        consgineeId = #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        shipping = #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        phoneId = #{phoneid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      pay_status = #{payStatus,jdbcType=TINYINT},
+      user_id = #{userId,jdbcType=INTEGER},
+      consgineeId = #{consgineeid,jdbcType=INTEGER},
+      payment = #{payment,jdbcType=TINYINT},
+      shipping = #{shipping,jdbcType=TINYINT},
+      addtime = #{addtime,jdbcType=DATE},
+      phoneId = #{phoneid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Order">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="order_sn" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="amount" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="pay_status" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="consgineeId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="shipping" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="addtime" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="phoneId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_sn, amount, pay_status, user_id, consgineeId, payment, shipping, addtime, 
+    phoneId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order (id, order_sn, amount, 
+      pay_status, user_id, consgineeId, 
+      payment, shipping, addtime, 
+      phoneId)
+    values (#{id,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{payStatus,jdbcType=TINYINT}, #{userId,jdbcType=INTEGER}, #{consgineeid,jdbcType=INTEGER}, 
+      #{payment,jdbcType=TINYINT}, #{shipping,jdbcType=TINYINT}, #{addtime,jdbcType=DATE}, 
+      #{phoneid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="consgineeid != null">
+        consgineeId,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="shipping != null">
+        shipping,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="phoneid != null">
+        phoneId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        #{phoneid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        consgineeId = #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        shipping = #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        phoneId = #{phoneid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      pay_status = #{payStatus,jdbcType=TINYINT},
+      user_id = #{userId,jdbcType=INTEGER},
+      consgineeId = #{consgineeid,jdbcType=INTEGER},
+      payment = #{payment,jdbcType=TINYINT},
+      shipping = #{shipping,jdbcType=TINYINT},
+      addtime = #{addtime,jdbcType=DATE},
+      phoneId = #{phoneid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.qst.PhoneShop.model.Order">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="order_sn" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="amount" javaType="java.lang.Long" jdbcType="DECIMAL" />
+      <arg column="pay_status" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="consgineeId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="payment" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="shipping" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="addtime" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="phoneId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_sn, amount, pay_status, user_id, consgineeId, payment, shipping, addtime, 
+    phoneId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order (id, order_sn, amount, 
+      pay_status, user_id, consgineeId, 
+      payment, shipping, addtime, 
+      phoneId)
+    values (#{id,jdbcType=INTEGER}, #{orderSn,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{payStatus,jdbcType=TINYINT}, #{userId,jdbcType=INTEGER}, #{consgineeid,jdbcType=INTEGER}, 
+      #{payment,jdbcType=TINYINT}, #{shipping,jdbcType=TINYINT}, #{addtime,jdbcType=DATE}, 
+      #{phoneid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qst.PhoneShop.model.Order">
+    insert into tb_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderSn != null">
+        order_sn,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="consgineeid != null">
+        consgineeId,
+      </if>
+      <if test="payment != null">
+        payment,
+      </if>
+      <if test="shipping != null">
+        shipping,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="phoneid != null">
+        phoneId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        #{phoneid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    <set>
+      <if test="orderSn != null">
+        order_sn = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=TINYINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="consgineeid != null">
+        consgineeId = #{consgineeid,jdbcType=INTEGER},
+      </if>
+      <if test="payment != null">
+        payment = #{payment,jdbcType=TINYINT},
+      </if>
+      <if test="shipping != null">
+        shipping = #{shipping,jdbcType=TINYINT},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="phoneid != null">
+        phoneId = #{phoneid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qst.PhoneShop.model.Order">
+    update tb_order
+    set order_sn = #{orderSn,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      pay_status = #{payStatus,jdbcType=TINYINT},
+      user_id = #{userId,jdbcType=INTEGER},
+      consgineeId = #{consgineeid,jdbcType=INTEGER},
+      payment = #{payment,jdbcType=TINYINT},
+      shipping = #{shipping,jdbcType=TINYINT},
+      addtime = #{addtime,jdbcType=DATE},
+      phoneId = #{phoneid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
